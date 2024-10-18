@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johns Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div id="start-page" class="page active">
+            <h1>Välkommen till Johns Quiz</h1>
+            <div class="name-input">
+                <label for="user-name">Skriv in ditt namn:</label>
+                <input type="text" id="user-name" placeholder="Ditt namn">
+            </div>
+            <div class="subject">
+                <h2>Ämne 1</h2>
+                <button onclick="startQuiz('ämne1')">Starta Quiz</button>
+            </div>
+            <div class="subject">
+                <h2>Ämne 2</h2>
+                <button onclick="startQuiz('ämne2')">Starta Quiz</button>
+            </div>
+            <p id="name-warning" style="color: red; display: none;">Vänligen fyll i ditt namn innan du börjar.</p>
+        </div>
+
+        <div id="quiz-page" class="page hidden">
+            <h2 id="question">Fråga</h2>
+            <div id="options" class="options-container"></div>
+            <div class="feedback" id="feedback"></div>
+            <p id="time-left">Tid kvar för denna fråga: 10 sekunder</p>
+            <p id="quiz-timer">Tid kvar för quiz: 60 sekunder</p>
+            <button id="next-question" onclick="nextQuestion()">Nästa Fråga</button>
+        </div>
+
+        <div id="result-page" class="page hidden">
+            <h2>Ditt resultat</h2>
+            <p id="user-result-name"></p> 
+            <p id="score"></p>
+            <p>Högsta poäng: <span id="high-score"></span></p>
+            <div id="scoreboard"></div>
+            <button onclick="resetQuiz()">Tillbaka till Start</button>
+        </div>
+    </div>
+</body>
+</html>
