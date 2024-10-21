@@ -1,4 +1,3 @@
-/* Grundinställningar för body och html */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,62 +6,56 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0; /* Ljus bakgrund för kontrast */
+    background-color: #f0f0f0; 
 }
 
-/* Stilar för huvudcontainern */
 .container {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lätt skugga för att lyfta fram quizrutan */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     width: 90%;
     max-width: 500px;
 }
 
-/* Grundläggande sidhantering */
 .page {
-    display: none; /* Dölj alla sidor som standard */
+    display: none; 
 }
 
 .page.active {
-    display: block; /* Visa endast den aktiva sidan */
+    display: block; 
 }
 
-/* Stilar för ämnesval och alternativ */
 .subject, #options {
     margin: 10px 0;
 }
 
 button {
     padding: 10px;
-    background-color: #007bff; /* Primär färg för knappar */
+    background-color: #007bff; 
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.3s ease; /* Mjuk övergång för hover-effekten */
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3; /* Mörkare nyans vid hovring */
+    background-color: #0056b3; 
 }
 
-/* Feedback-stil för att visa rätt eller fel */
 .feedback {
     margin-top: 10px;
     font-weight: bold;
 }
 
-/* Responsiv design för mindre skärmar */
 @media (max-width: 600px) {
     .container {
         width: 95%;
     }
 }
 
-/* Stilar för scoreboard */
 #scoreboard h3 {
     margin-top: 20px;
     font-size: 1.2em;
@@ -70,43 +63,39 @@ button:hover {
 }
 
 #scoreboard p {
-    background-color: #f1f1f1; /* Ljus bakgrundsfärg för att skilja resultaten */
+    background-color: #f1f1f1; 
     padding: 8px;
     border-radius: 5px;
     margin: 5px 0;
     font-weight: bold;
 }
 
-/* Timer-stil för att tydligt visa tidens nedräkning */
 #quiz-timer {
     font-weight: bold;
-    color: #ff0000; /* Röd färg för att uppmärksamma återstående tid */
+    color: #ff0000; 
     margin-top: 10px;
 }
 
-/* Stil för inmatningsfältet för användarnamn */
 #user-name {
-    width: 50%;               /* Gör fältet så brett som möjligt inom sin container */
-    padding: 10px;             /* Inre marginaler för att göra texten mer läsbar */
-    margin: 10px 0;            /* Yttre marginaler för att separera fältet från andra element */
-    border: 1px solid #ddd;    /* Lätt grå kantlinje för att markera fältet */
-    border-radius: 5px;        /* Rundade hörn för en mjukare design */
-    font-size: 16px;           /* Öka textstorleken för bättre läsbarhet */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Lätt inre skugga för djupkänsla */
+    width: 50%;               
+    padding: 10px;             
+    margin: 10px 0;            
+    border: 1px solid #ddd;    
+    border-radius: 5px;       
+    font-size: 16px;           
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
 }
 
-/* Stil för varningsmeddelandet om användarnamnet */
 #name-warning {
-    color: red;                /* Röd text för att indikera ett fel */
-    display: none;             /* Dölj varningen som standard */
-    margin-top: -5px;          /* Lätt justering av positionen för att hålla texten nära fältet */
-    margin-bottom: 10px;       /* Lite utrymme efter varningen för separation */
-    font-size: 0.9em;          /* Mindre textstorlek än standardtext */
-    font-weight: bold;         /* Fet stil för att göra meddelandet mer framträdande */
+    color: red;                
+    display: none;          
+    margin-top: -5px;          
+    margin-bottom: 10px;      
+    font-size: 0.9em;          
+    font-weight: bold;         
 }
 
-/* Stil för "Starta Quiz"-knappen när användarnamnet matas in */
 #start-quiz-button:disabled {
-    background-color: #cccccc; /* Gör knappen grå och otillgänglig när den är inaktiverad */
-    cursor: not-allowed;       /* Ändra muspekaren till en förbjuden symbol */
+    background-color: #cccccc; 
+    cursor: not-allowed;       
 }

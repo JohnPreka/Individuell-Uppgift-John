@@ -1,5 +1,5 @@
-// Frågor för olika ämnen
 const questions = {
+    
     ämne1: [
         { question: "Vad är 2 + 2?", options: ["3", "4", "5"], answer: "4" },
         { question: "Vilken färg har himlen?", options: ["Blå", "Grön", "Röd"], answer: "Blå" },
@@ -22,21 +22,18 @@ let currentQuestionIndex = 0;
 let score = 0;
 let timer;
 let timeLeft = 10;
-let userName = ""; // Variabel för att lagra användarnamnet
+let userName = ""; 
 let quizTimer; 
 let totalTimeLeft = 60; 
 
-// Startar quizzen och validerar användarnamn
 function startQuiz(subject) {
     const nameInput = document.getElementById('user-name').value.trim();
 
     if (nameInput === "") {
-        // Visa varningsmeddelande om namnet är tomt
         document.getElementById('name-warning').style.display = 'block';
         return;
     }
 
-    // Sätt användarnamnet och göm varningsmeddelandet
     userName = nameInput;
     document.getElementById('name-warning').style.display = 'none';
 
@@ -50,7 +47,6 @@ function startQuiz(subject) {
     startQuizTimer(); 
 }
 
-// Visar frågan och startar timern
 function showQuestion() {
     const questionObj = currentQuestions[currentQuestionIndex];
     document.getElementById('question').textContent = questionObj.question;
@@ -68,7 +64,6 @@ function showQuestion() {
     startTimer();
 }
 
-// Kontrollerar svaret och ger feedback
 function checkAnswer(selectedOption) {
     const correctAnswer = currentQuestions[currentQuestionIndex].answer;
     if (selectedOption === correctAnswer) {
@@ -80,7 +75,6 @@ function checkAnswer(selectedOption) {
         document.getElementById('feedback').style.color = 'red';
     }
 
-    // Inaktivera alla svarsknappar efter att ett svar har valts
     Array.from(document.getElementById('options').children).forEach(button => {
         button.disabled = true;
     });
@@ -88,7 +82,6 @@ function checkAnswer(selectedOption) {
     stopTimer();
 }
 
-// Visar nästa fråga eller resultat
 function nextQuestion() {
     if (currentQuestionIndex < currentQuestions.length - 1) {
         currentQuestionIndex++;
@@ -98,34 +91,28 @@ function nextQuestion() {
     }
 }
 
-// Visar resultat och uppdaterar high score
 function showResult() {
-    stopQuizTimer(); // Stoppa timern när resultatet visas
+    stopQuizTimer(); 
     showPage('result-page');
     document.getElementById('score').textContent = `Din poäng är: ${score} av ${currentQuestions.length}`;
     document.getElementById('user-result-name').textContent = `Bra jobbat, ${userName}!`; // Visa användarnamnet
     
-    // Uppdatera och visa högsta poäng
     const highScore = Math.max(score, localStorage.getItem('highScore') || 0);
     localStorage.setItem('highScore', highScore);
     document.getElementById('high-score').textContent = highScore;
 
-    // Uppdatera scoreboard
     updateScoreboard(score);
 }
 
-// Återställer quizzen till startsidan
 function resetQuiz() {
     showPage('start-page');
 }
 
-// Visar den aktiva sidan
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
 }
 
-// Startar nedräkningstimer för varje fråga
 function startTimer() {
     timeLeft = 10;
     document.getElementById('time-left').textContent = timeLeft;
@@ -134,12 +121,11 @@ function startTimer() {
         document.getElementById('time-left').textContent = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            checkAnswer(null); // Räknas som fel svar
+            checkAnswer(null); 
         }
     }, 1000);
 }
 
-// Startar timern för hela quizzen
 function startQuizTimer() {
     const timerElement = document.getElementById('quiz-timer');
     timerElement.textContent = `Tid kvar för quiz: ${totalTimeLeft} sekunder`;
@@ -156,32 +142,25 @@ function startQuizTimer() {
     }, 1000);
 }
 
-// Stoppar quiz-timern
 function stopQuizTimer() {
     clearInterval(quizTimer);
 }
 
-// Stoppar frågetimern
 function stopTimer() {
     clearInterval(timer);
 }
 
-// Uppdaterar scoreboard med användarens resultat
 function updateScoreboard(currentScore) {
     let scoreboard = JSON.parse(localStorage.getItem('scoreboard')) || [];
 
-    // Lägg till det nya resultatet till början av listan
     scoreboard.unshift({ name: userName, score: currentScore });
 
-    // Begränsa listan till de senaste 5 resultaten
     if (scoreboard.length > 5) {
         scoreboard = scoreboard.slice(0, 5);
     }
 
-    // Spara den uppdaterade scoreboarden i localStorage
     localStorage.setItem('scoreboard', JSON.stringify(scoreboard));
 
-    // Visa scoreboard på resultatsidan
     const scoreboardDiv = document.getElementById('scoreboard');
     scoreboardDiv.innerHTML = '<h3>Senaste Resultat</h3>';
     scoreboard.forEach((result, index) => {
@@ -191,7 +170,6 @@ function updateScoreboard(currentScore) {
     });
 }
 
-// Laddar startsidan när sidan öppnas
 window.onload = () => {
     showPage('start-page');
 };
